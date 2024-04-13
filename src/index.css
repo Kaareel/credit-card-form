@@ -88,6 +88,13 @@ label {
 
 input{
   font-family: Space Grotesk, sans-serif;
-  padding: .6em 1em;
+  padding: 10.8px 18px;
   transition: all .3s ease;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100%;
+  position: relative;
 }
