@@ -1,5 +1,6 @@
 interface Props {
-    ref: React.RefObject<HTMLInputElement>;
+    ref?: React.RefObject<HTMLInputElement>;
+    value: string;
     name: string
     id: string
     type: string
@@ -16,6 +17,7 @@ function Input(props: Props) {
         <div>
             <input
                 className={props.className}
+                value={props.value}
                 ref={props.ref}
                 name={props.name}
                 id={props.id}

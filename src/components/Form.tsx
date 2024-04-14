@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import Inputmask from 'inputmask';
+
 import Input from "../components/Input";
 import Title from "../components/Title";
 import { validate } from "../utils/helpers";
@@ -20,13 +19,7 @@ interface Props {
 }
 
 function Form(props: Props) {
-    const numberInput = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (numberInput.current) {
-            Inputmask("9999 9999 9999 9999", { placeholder: "" }).mask(numberInput.current);
-        }
-    }, []);
     const onlyWords = (e: any) => {
         const value = e.key;
         if (!/^[a-zA-Z ]+$/.test(value)) {
@@ -36,9 +29,14 @@ function Form(props: Props) {
 
     const onlyNumber = (e: any) => {
         const value = e.key;
-        if (!/^\d+$/.test(value)) {
-            e.preventDefault();
+        if(value === "Backspace" || value === "Delete"){
+            return;
         }
+        const valueFormatted = Number(value)
+        if (!Number.isNaN(valueFormatted) && valueFormatted >= 0 && valueFormatted <= 9){
+            return;
+        }
+        e.preventDefault();
     }
 
     const handleInputChange = (e: any) => {
@@ -49,7 +47,6 @@ function Form(props: Props) {
                 .replace(/\D/g, '')
                 .replace(/\B(?=(\d{4})+(?!\d))/g, ' ');
         }
-        console.log(formattedValue);
 
         props.setData({ ...props.data, [name]: formattedValue });
     }
@@ -69,13 +66,13 @@ function Form(props: Props) {
                 <Title title="CARDHOLDER NAME" />
                 <Input
                     name="name"
+                    value={props.data.name}
                     id="cardHolder"
                     type="text"
                     placeholder="e.g. Jane Appleseed"
                     className="w-full border rounded-md text-lg font-normal"
                     onChange={handleInputChange}
                     onKeyDown={onlyWords}
-                    ref={numberInput}
                     maxLength={36} />
                 {props.error.name && <span className="text-red-500 ">{props.error.name}</span>}
             </div>
@@ -83,14 +80,14 @@ function Form(props: Props) {
                 <Title title="CARD NUMBER" />
                 <Input
                     name="number"
+                    value={props.data.number}
                     id="number"
                     type="text"
                     placeholder="e.g. 1234 5678 9123 0000"
                     className="w-full border rounded-md text-lg font-normal"
                     onChange={handleInputChange}
-                    ref={numberInput}
                     onKeyDown={onlyNumber}
-                    maxLength={16} />
+                    maxLength={19} />
                 {props.error.number && <span className="text-red-500 ">{props.error.number}</span>}
             </div>
             <div className="flex flex-row mb-[27px] gap-2">
@@ -98,8 +95,8 @@ function Form(props: Props) {
                     <Title title="EXP. DATE(MM/YY)" />
                     <div className="flex flex-row gap-2">
                         <Input
-                            ref={numberInput}
                             name="MM"
+                            value={props.data.MM}
                             id="expiryMonth"
                             type="text"
                             placeholder="MM"
@@ -108,8 +105,8 @@ function Form(props: Props) {
                             onKeyDown={onlyNumber}
                             maxLength={2} />
                         <Input
-                            ref={numberInput}
                             name="YY"
+                            value={props.data.YY}
                             id="expiryYear"
                             type="text"
                             placeholder="YY"
@@ -123,8 +120,8 @@ function Form(props: Props) {
                 <div className="flex flex-col">
                     <Title title="CVC" />
                     <Input
-                        ref={numberInput}
                         name="cvc"
+                        value={props.data.cvc}
                         id="cvc"
                         type="text"
                         placeholder="e.g. 123"

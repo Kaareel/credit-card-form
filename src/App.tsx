@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { validate } from "./utils/helpers";
-import Title from "./components/Title";
 import Form from "./components/Form";
 import Image from "./components/Image";
 
@@ -8,11 +6,11 @@ import Image from "./components/Image";
 function App() {
   const [error, setError] = useState<{ [key: string]: string }>({});
   const [data, setData] = useState({
-    name: "Jane Appleseed",
-    number: "0000 0000 0000 0000",
-    cvc: "000",
-    MM: "00",
-    YY: "00",
+    name: "",
+    number: "",
+    cvc: "",
+    MM: "",
+    YY: "",
   })
 
   return (
@@ -22,8 +20,8 @@ function App() {
         <div className="card-front">
           <div className="animater" data-v-8fcb32d4>
             <img src="/card-logo.svg" alt="icon" className="icon opacity-100" />
-            <label className="number" htmlFor="number" typeof="number" data-v-8fcb32d4>{error.number ? "0000 0000 0000 0000" : `${data.number}`}</label>
-            <label className="name" htmlFor="cardHolder" data-v-8fcb32d4="">{error.name ? data.name : data.name}</label>
+            <label className="number" htmlFor="number" typeof="number" data-v-8fcb32d4>{!data.number ? "0000 0000 0000 0000" : `${data.number}`}</label>
+            <label className="name" htmlFor="cardHolder" data-v-8fcb32d4="">{!data.name ? "Jane Appleseed" : data.name}</label>
             <label className="expiry" htmlFor="expiryMonth" data-v-8fcb32d4="">{data.MM && data.YY ? `${data.MM}/${data.YY}` : "00/00"}</label>
           </div>
         </div>
@@ -35,6 +33,7 @@ function App() {
         </div>
       </div>
       <Form data={data} setData={setData} error={error} setError={setError}/>
+
     </div>
   );
 }

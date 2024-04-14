@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.4",
     "@types/inputmask": "^5.0.7",
     "tailwindcss": "^3.4.3"
   }
