@@ -10,6 +10,8 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.25",
+    "inputmask": "^5.0.8",
+    "jquery": "^3.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -41,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@types/inputmask": "^5.0.7",
     "tailwindcss": "^3.4.3"
   }
 }
