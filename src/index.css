@@ -140,13 +140,7 @@ code {
   left: auto
 }
 
-h1 {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin-bottom: .5em;
-}
+
 
 input{
   font-family: Space Grotesk, sans-serif;
