@@ -25,7 +25,7 @@ export const validate = (
 		newError.YY = "Value is required";
 	} else if (
 		Number(YY) < currentYear ||
-		(Number(YY) == currentYear && Number(MM) <= currentMonth)
+		(Number(YY) === currentYear && Number(MM) <= currentMonth)
 	) {
 		newError.YY = "Enter a future Year (YY)";
 	}
