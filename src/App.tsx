@@ -45,7 +45,7 @@ function App() {
 					<div>
 						<img src="bg-card-back.png" alt="main" className="" />
 						<label className="cvc" htmlFor="cvc" data-v-908f8694="">
-							000
+						{!data.cvc ? "000" : `${data.cvc}`}
 						</label>
 					</div>
 				</div>

@@ -37,6 +37,16 @@ code {
       box-shadow: 0 30px 40px -25px rgba(15,5,20,.75)
   }
 }
+@media screen and (min-width: 800px) {
+  .card-back[data-v-908f8694] {
+      position: absolute;
+      right: -100px;
+      top: 53%;
+      left: auto;
+      transform: none;
+      z-index: 3;
+  }
+}
 
 @media screen and (min-width: 420px) {
   .card-back[data-v-908f8694] {
@@ -140,7 +150,20 @@ code {
   left: auto
 }
 
-
+.cvc[data-v-908f8694] {
+  position: absolute;
+  right: 30px;
+  left: 30px;
+  top: 80px;
+  color: #fff;
+  background: #a4a7af;
+  border-radius: 3px;
+  text-align: right;
+  padding: .5em 1em;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 600;
+}
 
 input{
   font-family: Space Grotesk, sans-serif;
